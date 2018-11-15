@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-buttons>
       <button ion-button clear (click)="dismissModal()">
-        <ion-icon name="md-close" ></ion-icon>
+        <ion-icon name="md-close"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>{{ book.name }}</ion-title>
@@ -18,5 +18,15 @@
     <ion-card-content>
       <p *ngFor="let line of book.description">{{ line }}</p>
     </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button full color="danger">Supprimer</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button full color="secondary">Editer</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-content>
