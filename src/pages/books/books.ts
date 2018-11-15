@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 import { SingleBookPage } from './single-book/single-book';
 
 /**
@@ -43,11 +43,12 @@ export class BooksPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private modalCtrl: ModalController) {
   }
 
   onLoadBook(book: {name: string, description: string[]}) {
-    this.navCtrl.push(SingleBookPage, {book: book});
+    let modal = this.modalCtrl.create(SingleBookPage, {book: book});
+    modal.present();
   }
 
 }
