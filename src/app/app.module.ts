@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { BooksPage } from '../pages/books/books';
 import { SingleBookPage } from '../pages/books/single-book/single-book';
 import { SettingsPage } from '../pages/settings/settings';
+import { DressingPage } from '../pages/dressing/dressing';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     BooksPage,
     SingleBookPage,
     SettingsPage,
+    DressingPage,
     TabsPage
   ],
   imports: [
@@ -31,6 +33,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     BooksPage,
     SingleBookPage,
     SettingsPage,
+    DressingPage,
     TabsPage
   ],
   providers: [

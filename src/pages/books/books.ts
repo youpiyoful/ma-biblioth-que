@@ -16,11 +16,38 @@ import { SingleBookPage } from './single-book/single-book';
 })
 export class BooksPage {
 
+  booksList = [
+    {
+      name: 'Programmer en s\'amusant avec Python',
+      description: [
+        'Auteur : Brendan Scott',
+        'Edition : Pour Les Nuls',
+        'Genre : Educatif'
+      ]
+    },
+    {
+      name: 'L\'essentiel du Japon',
+      description: [
+        'Auteur : Chris Rowthorn',
+        'Edition : lonely planet',
+        'Genre : Voyage et Culture',
+      ]
+    },
+    {
+      name: 'Vegan',
+      description: [
+        'Auteur : Karen Chevalier',
+        'Edition : Hachette Cuisine',
+        'Genre : Cuisine'
+      ]
+    }
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  onLoadBook(name: string) {
-    this.navCtrl.push(SingleBookPage, {bookName: name});
+  onLoadBook(book: {name: string, description: string[]}) {
+    this.navCtrl.push(SingleBookPage, {book: book});
   }
 
 }

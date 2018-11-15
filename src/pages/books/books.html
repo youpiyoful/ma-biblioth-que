@@ -7,6 +7,10 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button (click)="onLoadBook('Programmer avec Python en s\\'amusant')">Programmer avec Python en s'amusant</button>
-    <button ion-button (click)="onLoadBook('L\\'essentiel du Japon')">L'essentiel du Japon</button>
+  <ion-list>
+    <button ion-item *ngFor="let book of booksList"
+                     (click)="onLoadBook(book)">
+      {{ book.name }}
+    </button>
+  </ion-list>
 </ion-content>
