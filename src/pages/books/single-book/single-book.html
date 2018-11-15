@@ -2,7 +2,9 @@
 
   <ion-navbar>
     <ion-buttons>
-      <button ion-button clear (click)="dismissModal()">Fermer</button>
+      <button ion-button clear (click)="dismissModal()">
+        <ion-icon name="md-close" ></ion-icon>
+      </button>
     </ion-buttons>
     <ion-title>{{ book.name }}</ion-title>
   </ion-navbar>
