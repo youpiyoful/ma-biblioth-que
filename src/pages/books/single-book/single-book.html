@@ -21,10 +21,18 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <button ion-button full color="danger">Supprimer</button>
+          <button ion-button
+                  full
+                  color="danger"
+                  [disabled]="!book.isLoan"
+                  (click)="onToggleBook()">Prêter</button>
         </ion-col>
         <ion-col>
-          <button ion-button full color="secondary">Editer</button>
+          <button ion-button
+          full
+          color="success"
+          [disabled]="book.isLoan"
+          (click)="onToggleBook()">Ranger</button>
         </ion-col>
       </ion-row>
     </ion-grid>

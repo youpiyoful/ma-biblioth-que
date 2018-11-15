@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
 import { SingleBookPage } from './single-book/single-book';
-
-/**
- * Generated class for the BooksPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Book } from '../../models/Book';
+import { BooksService } from '../../services/books.service';
 
 @IonicPage()
 @Component({
@@ -16,38 +11,17 @@ import { SingleBookPage } from './single-book/single-book';
 })
 export class BooksPage {
 
-  booksList = [
-    {
-      name: 'Programmer en s\'amusant avec Python',
-      description: [
-        'Auteur : Brendan Scott',
-        'Edition : Pour Les Nuls',
-        'Genre : Educatif'
-      ]
-    },
-    {
-      name: 'L\'essentiel du Japon',
-      description: [
-        'Auteur : Chris Rowthorn',
-        'Edition : lonely planet',
-        'Genre : Voyage et Culture',
-      ]
-    },
-    {
-      name: 'Vegan',
-      description: [
-        'Auteur : Karen Chevalier',
-        'Edition : Hachette Cuisine',
-        'Genre : Cuisine'
-      ]
-    }
-  ];
+  booksList: Book[];
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController,
+              private booksService: BooksService) {}
+
+  ionViewWillEnter() {
+    this.booksList = this.booksService.booksList.slice();
   }
 
-  onLoadBook(book: {name: string, description: string[]}) {
-    let modal = this.modalCtrl.create(SingleBookPage, {book: book});
+  onLoadBook(index: number) {
+    let modal = this.modalCtrl.create(SingleBookPage, {index: index});
     modal.present();
   }
 

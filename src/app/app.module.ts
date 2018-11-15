@@ -11,6 +11,7 @@ import { SingleBookPage } from '../pages/books/single-book/single-book';
 import { SettingsPage } from '../pages/settings/settings';
 import { DressingPage } from '../pages/dressing/dressing';
 import { TabsPage } from '../pages/tabs/tabs';
+import { BooksService } from '../services/books.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   providers: [
     StatusBar,
     SplashScreen,
+    BooksService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
