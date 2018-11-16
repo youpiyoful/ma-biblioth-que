@@ -12,6 +12,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { DressingPage } from '../pages/dressing/dressing';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BooksService } from '../services/books.service';
+import { OptionsPage } from '../pages/options/options';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BooksService } from '../services/books.service';
     SingleBookPage,
     SettingsPage,
     DressingPage,
-    TabsPage
+    TabsPage,
+    OptionsPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { BooksService } from '../services/books.service';
     SingleBookPage,
     SettingsPage,
     DressingPage,
-    TabsPage
+    TabsPage,
+    OptionsPage
   ],
   providers: [
     StatusBar,

@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { MenuController } from 'ionic-angular';
+import { MenuController } from 'ionic-angular'
 
 @Component({
-  selector: 'page-dressing',
-  templateUrl: 'dressing.html',
+  selector: 'page-options',
+  templateUrl: 'options.html',
 })
-export class DressingPage {
+export class OptionsPage {
 
   constructor(private menuCtrl: MenuController) {}
 
   onToggleMenu() {
     this.menuCtrl.open();
   }
-
 }

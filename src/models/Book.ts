@@ -1,6 +1,5 @@
 export class Book {
 
-  name: string;
   description: string[];
   isLoan: boolean;
 
