@@ -31,14 +31,14 @@ export class SingleBookPage implements OnInit {
 
   onSubmitForm(form: NgForm) {
     this.book.startTime = this.myDate;
-    this.book.isLoan = true;
-    // this.dismissModal();
+    this.book.isLoan = !this.book.isLoan;
+    this.dismissModal(); // not required, just an ux choice
   }
 
   onStoreBook() {
     this.book.startTime = '';
-    this.book.isLoan = 'false';
-    // this.dismissModal();
+    this.book.isLoan = !this.book.isLoan;
+    this.dismissModal();  // not required, just an ux choice
   }
 
 }
