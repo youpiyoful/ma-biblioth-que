@@ -7,6 +7,7 @@ export class Book {
   noOneToWhomYouLentIt: string;
 
   constructor(public name: string) {
+    this.description = [];
     this.isLoan = false;
     this.startTime = '';
     this.endTime = '';

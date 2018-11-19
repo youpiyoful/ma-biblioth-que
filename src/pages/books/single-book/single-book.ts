@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { Book } from '../../../models/Book';
 import { BooksService } from '../../../services/books.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+// import { BookFormPage } from '../book-form/book-form';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SingleBookPage implements OnInit {
   constructor(public navParams: NavParams,
               public viewCtrl: ViewController,
               public booksService: BooksService,
-              private formBuilder: FormBuilder) {}
+              public formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.index = this.navParams.get('index');
@@ -32,6 +33,7 @@ export class SingleBookPage implements OnInit {
   onSubmitForm(form: NgForm) {
     this.book.startTime = this.myDate;
     this.book.isLoan = !this.book.isLoan;
+    // console.log(form.value);
     this.dismissModal(); // not required, just an ux choice
   }
 

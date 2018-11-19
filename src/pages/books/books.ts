@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, MenuController } from 'ionic-angular';
+import { IonicPage, ModalController, MenuController, NavController } from 'ionic-angular';
 import { SingleBookPage } from './single-book/single-book';
 import { Book } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
+import { BookFormPage } from './book-form/book-form';
 
 @IonicPage()
 @Component({
@@ -15,7 +16,8 @@ export class BooksPage {
 
   constructor(private modalCtrl: ModalController,
               private booksService: BooksService,
-              private menuCtrl: MenuController) {}
+              private menuCtrl: MenuController,
+              public navCtrl: NavController) {}
 
   ionViewWillEnter() {
     this.booksList = this.booksService.booksList.slice();
@@ -28,6 +30,10 @@ export class BooksPage {
 
   onToggleMenu() {
     this.menuCtrl.open();
+  }
+
+  onNewBook() {
+    this.navCtrl.push(BookFormPage);
   }
 
 }

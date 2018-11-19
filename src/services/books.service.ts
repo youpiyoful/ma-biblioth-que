@@ -39,4 +39,9 @@ export class BooksService {
       noOneToWhomYouLentIt: ''
     }
   ];
+
+  addBook(book: Book) {
+  this.booksList.push(book);
+  }
+
 }
