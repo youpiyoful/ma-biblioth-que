@@ -9,7 +9,9 @@ export class BooksService {
         'Edition : Pour Les Nuls',
         'Genre : Educatif'
       ],
-      isLoan: false
+      isLoan: false,
+      startTime: '',
+      endTime: ''
     },
     {
       name: 'L\'essentiel du Japon',
@@ -18,7 +20,9 @@ export class BooksService {
         'Edition : lonely planet',
         'Genre : Voyage et Culture',
       ],
-      isLoan: false
+      isLoan: false,
+      startTime: '',
+      endTime: ''
     },
     {
       name: 'Vegan',
@@ -27,7 +31,9 @@ export class BooksService {
         'Edition : Hachette Cuisine',
         'Genre : Cuisine'
       ],
-      isLoan: true
+      isLoan: true,
+      startTime: '',
+      endTime: ''
     }
   ];
 }

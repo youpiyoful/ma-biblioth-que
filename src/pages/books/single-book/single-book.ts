@@ -11,6 +11,7 @@ export class SingleBookPage implements OnInit {
 
   index: number;
   book: Book;
+  myDate: string = new Date().toISOString();
 
   constructor(public navParams: NavParams,
               public viewCtrl: ViewController,
@@ -27,6 +28,11 @@ export class SingleBookPage implements OnInit {
 
   onToggleBook() {
     this.book.isLoan = !this.book.isLoan;
+    if (this.book.isLoan === false){
+      this.book.startTime = this.myDate;
+    } else {
+      this.book.startTime = '';
+    }
   }
 
 }
