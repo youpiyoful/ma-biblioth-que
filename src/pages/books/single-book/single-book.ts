@@ -37,6 +37,7 @@ export class SingleBookPage implements OnInit {
 
   onStoreBook() {
     this.book.startTime = '';
+    this.book.noOneToWhomYouLentIt = '';
     this.book.isLoan = !this.book.isLoan;
     this.dismissModal();  // not required, just an ux choice
   }

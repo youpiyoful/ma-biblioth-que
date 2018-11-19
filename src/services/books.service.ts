@@ -11,7 +11,8 @@ export class BooksService {
       ],
       isLoan: false,
       startTime: '',
-      endTime: ''
+      endTime: '',
+      noOneToWhomYouLentIt: ''
     },
     {
       name: 'L\'essentiel du Japon',
@@ -22,7 +23,8 @@ export class BooksService {
       ],
       isLoan: false,
       startTime: '',
-      endTime: ''
+      endTime: '',
+      noOneToWhomYouLentIt: ''
     },
     {
       name: 'Vegan',
@@ -33,7 +35,8 @@ export class BooksService {
       ],
       isLoan: true,
       startTime: '',
-      endTime: ''
+      endTime: '',
+      noOneToWhomYouLentIt: ''
     }
   ];
 }

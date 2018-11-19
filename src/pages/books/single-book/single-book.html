@@ -26,6 +26,11 @@
           <ion-label>Jour du prêt</ion-label>
           <ion-datetime displayFormat="DD/MM/YYYY" name="startTime" [ngModel]="book.startTime"></ion-datetime>
         </ion-item>
+        <ion-item>
+          <ion-label>À qui prêtez-vous ?</ion-label>
+          <ion-input placeholder="Prénom et Nom" [(ngModel)]="book.noOneToWhomYouLentIt" name="noOneToWhomYouLentIt"></ion-input>
+        </ion-item>
+        <p>{{ book.noOneToWhomYouLentIt }}</p>
       </ion-list>
       <ion-row>
         <ion-col>
