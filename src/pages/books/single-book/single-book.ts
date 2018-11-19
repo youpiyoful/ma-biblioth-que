@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { Book } from '../../../models/Book';
 import { BooksService } from '../../../services/books.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'page-single-book',
@@ -15,7 +17,8 @@ export class SingleBookPage implements OnInit {
 
   constructor(public navParams: NavParams,
               public viewCtrl: ViewController,
-              public booksService: BooksService) {}
+              public booksService: BooksService,
+              private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.index = this.navParams.get('index');
@@ -26,13 +29,16 @@ export class SingleBookPage implements OnInit {
     this.viewCtrl.dismiss();
   }
 
-  onToggleBook() {
-    this.book.isLoan = !this.book.isLoan;
-    if (this.book.isLoan === false){
-      this.book.startTime = this.myDate;
-    } else {
-      this.book.startTime = '';
-    }
+  onSubmitForm(form: NgForm) {
+    this.book.startTime = this.myDate;
+    this.book.isLoan = true;
+    // this.dismissModal();
+  }
+
+  onStoreBook() {
+    this.book.startTime = '';
+    this.book.isLoan = 'false';
+    // this.dismissModal();
   }
 
 }

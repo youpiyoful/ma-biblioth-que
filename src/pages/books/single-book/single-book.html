@@ -29,18 +29,18 @@
       </ion-list>
       <ion-row>
         <ion-col>
-          <button ion-button
+          <button type="submit"
+                  ion-button
                   full
                   color="danger"
-                  [disabled]="!book.isLoan"
-                  (click)="onToggleBook()">Prêter</button>
+                  [disabled]="!book.isLoan">Prêter</button>
         </ion-col>
         <ion-col>
           <button ion-button
                   full
                   color="success"
                   [disabled]="book.isLoan"
-                  (click)="onToggleBook()">Ranger</button>
+                  (click)="onStoreBook()">Ranger</button>
         </ion-col>
       </ion-row>
     </ion-grid>
