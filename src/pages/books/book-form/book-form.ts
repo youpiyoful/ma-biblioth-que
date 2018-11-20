@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 import { BooksService } from '../../../services/books.service';
+import { Book } from '../../../models/Book';
 
 @Component({
   selector: 'page-book-form',
@@ -13,7 +14,8 @@ export class BookFormPage implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              public navCtrl: NavController) {}
+              public navCtrl: NavController,
+              private booksService: BooksService) {}
 
   ngOnInit() {
     this.initForm();
@@ -26,14 +28,14 @@ export class BookFormPage implements OnInit {
     });
   }
 
-  // onSubmitForm() {
-  //   let newBook = new Book(this.bookForm.get('name').value);
-  //   for (let control of this.getDescriptionArray().controls) {
-  //     newBook.description.push(control.value);
-  //   }
-  //   this.booksService.addBook(newBook);
-  //   this.navCtrl.pop();
-  // }
+  onSubmitForm() {
+    let newBook = new Book(this.bookForm.get('name').value);
+    for (let control of this.getDescriptionArray().controls) {
+      newBook.description.push(control.value);
+    }
+    this.booksService.addBook(newBook);
+    this.navCtrl.pop();
+  }
 
   getDescriptionArray() {
     return this.bookForm.get('description') as FormArray;
