@@ -7,6 +7,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { OptionsPage } from '../pages/options/options';
 // import { DressingPage } from '../pages/dressing/dressing';
 // import { SettingsPage } from '../pages/settings/settings';
+
+import * as firebase from 'firebase';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,8 +25,16 @@ export class MyApp {
               splashScreen: SplashScreen,
               private menuCtrl: MenuController) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+    // Initialize Firebase
+      let config = {
+        apiKey: "AIzaSyB5qxlUcf0euIvuuGnO2p2afSCYYlgSs_4",
+        authDomain: "mon-inventaire.firebaseapp.com",
+        databaseURL: "https://mon-inventaire.firebaseio.com",
+        projectId: "mon-inventaire",
+        storageBucket: "mon-inventaire.appspot.com",
+        messagingSenderId: "1076772186256"
+      };
+      firebase.initializeApp(config);
       statusBar.styleDefault();
       splashScreen.hide();
     });

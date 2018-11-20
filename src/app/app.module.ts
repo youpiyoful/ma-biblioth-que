@@ -4,16 +4,18 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { AuthService } from '../services/auth.service';
+import { BookFormPage } from '../pages/books/book-form/book-form';
 import { BooksPage } from '../pages/books/books';
+import { BooksService } from '../services/books.service';
+import { DressingPage } from '../pages/dressing/dressing';
+import { HomePage } from '../pages/home/home';
+import { MyApp } from './app.component';
+import { OptionsPage } from '../pages/options/options';
 import { SingleBookPage } from '../pages/books/single-book/single-book';
 import { SettingsPage } from '../pages/settings/settings';
-import { DressingPage } from '../pages/dressing/dressing';
 import { TabsPage } from '../pages/tabs/tabs';
-import { BooksService } from '../services/books.service';
-import { OptionsPage } from '../pages/options/options';
-import { BookFormPage } from '../pages/books/book-form/book-form';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { BookFormPage } from '../pages/books/book-form/book-form';
     TabsPage
   ],
   providers: [
+    AuthService,
     BooksService,
     StatusBar,
     SplashScreen,
