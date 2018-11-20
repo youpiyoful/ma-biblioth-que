@@ -5,8 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { OptionsPage } from '../pages/options/options';
-import { DressingPage } from '../pages/dressing/dressing';
-import { SettingsPage } from '../pages/settings/settings';
+// import { DressingPage } from '../pages/dressing/dressing';
+// import { SettingsPage } from '../pages/settings/settings';
 @Component({
   templateUrl: 'app.html'
 })

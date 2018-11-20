@@ -17,15 +17,15 @@ import { BookFormPage } from '../pages/books/book-form/book-form';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
+    BookFormPage,
     BooksPage,
-    SingleBookPage,
-    SettingsPage,
     DressingPage,
-    TabsPage,
+    HomePage,
+    MyApp,
     OptionsPage,
-    BookFormPage
+    SettingsPage,
+    SingleBookPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -33,20 +33,20 @@ import { BookFormPage } from '../pages/books/book-form/book-form';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
+    BookFormPage,
     BooksPage,
-    SingleBookPage,
-    SettingsPage,
     DressingPage,
-    TabsPage,
+    HomePage,
+    MyApp,
     OptionsPage,
-    BookFormPage
+    SettingsPage,
+    SingleBookPage,
+    TabsPage
   ],
   providers: [
+    BooksService,
     StatusBar,
     SplashScreen,
-    BooksService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
