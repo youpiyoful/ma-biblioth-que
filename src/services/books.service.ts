@@ -1,6 +1,10 @@
 import { Book } from '../models/Book';
+import { Subject } from 'rxjs/Subject';
 
 export class BooksService {
+
+  books$ = new Subject<Book[]>();
+
   booksList: Book[] = [
     {
       name: 'Programmer en s\'amusant avec Python',
@@ -42,6 +46,10 @@ export class BooksService {
 
   addBook(book: Book) {
   this.booksList.push(book);
+  }
+
+  emitBooks() {
+    this.books$.next(this.booksList.slice());
   }
 
 }

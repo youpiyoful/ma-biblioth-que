@@ -22,12 +22,12 @@
   <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
     <ion-grid>
       <ion-list>
+        <ion-item-divider color="no-interactif">Jour du prêt</ion-item-divider>
         <ion-item>
-          <ion-label>Jour du prêt</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" name="startTime" [ngModel]="book.startTime"></ion-datetime>
+          <ion-datetime displayFormat="DD/MM/YYYY" name="startTime" [ngModel]="book.startTime" placeholder="Date"></ion-datetime>
         </ion-item>
+        <ion-item-divider color="no-interactif">À qui l'avez-vous prêté ?</ion-item-divider>
         <ion-item>
-          <ion-label>À qui l'avez-vous prêté ?</ion-label>
           <ion-input type="text" placeholder="Prénom et Nom" [(ngModel)]="book.noOneToWhomYouLentIt" name="noOneToWhomYouLentIt"></ion-input>
         </ion-item>
       </ion-list>
