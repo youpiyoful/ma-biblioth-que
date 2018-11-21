@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { AuthPage } from '../pages/auth/auth';
 import { AuthService } from '../services/auth.service';
 import { BookFormPage } from '../pages/books/book-form/book-form';
 import { BooksPage } from '../pages/books/books';
@@ -19,6 +20,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
+    AuthPage,
     BookFormPage,
     BooksPage,
     DressingPage,
@@ -35,6 +37,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    AuthPage,
     BookFormPage,
     BooksPage,
     DressingPage,
