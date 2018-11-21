@@ -5,6 +5,8 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import { IonicPage, ModalController, MenuController, NavController } from 'ionic-angular';
 import { SingleBookPage } from './single-book/single-book';
 import { Subscription } from 'rxjs/Subscription';
+import { ToastController, LoadingController } from 'ionic-angular';
+
 
 @IonicPage()
 @Component({
@@ -19,7 +21,9 @@ export class BooksPage implements OnInit, OnDestroy {
   constructor(private modalCtrl: ModalController,
               private booksService: BooksService,
               private menuCtrl: MenuController,
-              public navCtrl: NavController) {}
+              public navCtrl: NavController,
+              private toastCtrl: ToastController,
+              private loadingCtrl: LoadingController) {}
 
   ngOnInit() {
     this.booksSubscription = this.booksService.books$.subscribe(
@@ -41,6 +45,57 @@ export class BooksPage implements OnInit, OnDestroy {
 
   onNewBook() {
     this.navCtrl.push(BookFormPage);
+  }
+
+  onSaveList() {
+    let loader = this.loadingCtrl.create({
+      content: 'Sauvegarde en cours'
+    });
+    loader.present();
+    this.booksService.saveData().then(
+      () => {
+        loader.dismiss();
+        this.toastCtrl.create({
+          message: 'Données sauvegardées !',
+          duration: 3000,
+          position: 'bottom'
+        }).present();
+      }
+    ).catch(
+      (error) => {
+        loader.dismiss();
+        this.toastCtrl.create({
+          message: error,
+          duration: 3000,
+          position: 'bottom'
+        }).present();
+      }
+    );
+  }
+  onFetchList() {
+    let loader = this.loadingCtrl.create({
+      content: 'Récupération en cours'
+    });
+    loader.present();
+    this.booksService.retrieveData().then(
+      () => {
+        loader.dismiss();
+        this.toastCtrl.create({
+          message: 'Données récupérées !',
+          duration: 3000,
+          position: 'bottom'
+        }).present();
+      }
+    ).catch(
+      (error) => {
+        loader.dismiss();
+        this.toastCtrl.create({
+          message: error,
+          duration: 10000,
+          position: 'bottom'
+        }).present();
+      }
+    );
   }
 
   ngOnDestroy() {

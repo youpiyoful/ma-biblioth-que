@@ -5,6 +5,7 @@ export class Book {
   startTime: string;
   endTime: string;
   noOneToWhomYouLentIt: string;
+  imagePath: string;
 
   constructor(public name: string) {
     this.description = [];
@@ -12,5 +13,6 @@ export class Book {
     this.startTime = '';
     this.endTime = '';
     this.noOneToWhomYouLentIt = '';
+    this.imagePath = '';
   }
 }

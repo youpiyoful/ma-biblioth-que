@@ -1,6 +1,9 @@
 import { Book } from '../models/Book';
 import { Subject } from 'rxjs/Subject';
 
+import * as firebase from 'firebase';
+import DataSnapshot = firebase.database.DataSnapshot;
+
 export class BooksService {
 
   books$ = new Subject<Book[]>();
@@ -16,7 +19,8 @@ export class BooksService {
       isLoan: false,
       startTime: '',
       endTime: '',
-      noOneToWhomYouLentIt: ''
+      noOneToWhomYouLentIt: '',
+      imagePath: ''
     },
     {
       name: 'L\'essentiel du Japon',
@@ -28,7 +32,8 @@ export class BooksService {
       isLoan: false,
       startTime: '',
       endTime: '',
-      noOneToWhomYouLentIt: ''
+      noOneToWhomYouLentIt: '',
+      imagePath: ''
     },
     {
       name: 'Vegan',
@@ -40,16 +45,48 @@ export class BooksService {
       isLoan: true,
       startTime: '',
       endTime: '',
-      noOneToWhomYouLentIt: ''
+      noOneToWhomYouLentIt: '',
+      imagePath: ''
     }
   ];
 
   addBook(book: Book) {
   this.booksList.push(book);
+  this.emitBooks();
   }
 
   emitBooks() {
     this.books$.next(this.booksList.slice());
+  }
+
+  saveData() {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('books').set(this.booksList).then(
+        (data: DataSnapshot) => {
+          resolve(data);
+        }
+      ).catch(
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  retrieveData() {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('books').once('value').then(
+        (data: DataSnapshot) => {
+          this.booksList = data.val();
+          this.emitBooks();
+          resolve("Données récupérées avec succès !")
+        }
+      ).catch(
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   }
 
 }
