@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { BookFormPage } from '../pages/books/book-form/book-form';
 import { BooksPage } from '../pages/books/books';
 import { BooksService } from '../services/books.service';
+import { Camera } from '@ionic-native/camera';
 import { DressingPage } from '../pages/dressing/dressing';
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
@@ -51,6 +52,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   providers: [
     AuthService,
     BooksService,
+    Camera,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -22,6 +22,9 @@
   <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
     <ion-grid>
       <ion-list>
+        <ion-item *ngIf="imageUrl">
+          <img [src]="imageUrl" style="max-width: 100%">
+        </ion-item>
         <ion-item-divider color="no-interactif">Jour du prêt</ion-item-divider>
         <ion-item>
           <ion-datetime displayFormat="DD/MM/YYYY" name="startTime" [ngModel]="book.startTime" placeholder="Date"></ion-datetime>
@@ -31,6 +34,11 @@
           <ion-input type="text" placeholder="Prénom et Nom" [(ngModel)]="book.noOneToWhomYouLentIt" name="noOneToWhomYouLentIt"></ion-input>
         </ion-item>
       </ion-list>
+      <div text-center>
+        <button ion-button round large icon-only (click)="onTakePhoto()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </div>
       <ion-row>
         <ion-col>
           <button type="submit"

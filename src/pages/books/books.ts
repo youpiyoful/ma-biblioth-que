@@ -5,7 +5,7 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import { IonicPage, ModalController, MenuController, NavController } from 'ionic-angular';
 import { SingleBookPage } from './single-book/single-book';
 import { Subscription } from 'rxjs/Subscription';
-import { ToastController, LoadingController } from 'ionic-angular';
+import { LoadingController, ToastController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -17,13 +17,14 @@ export class BooksPage implements OnInit, OnDestroy {
 
   booksList: Book[];
   booksSubscription: Subscription;
+  bookFormPage = BookFormPage;
 
-  constructor(private modalCtrl: ModalController,
+  constructor(private modalCtrl:    ModalController,
               private booksService: BooksService,
-              private menuCtrl: MenuController,
-              public navCtrl: NavController,
-              private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController) {}
+              private menuCtrl:     MenuController,
+              public  navCtrl:      NavController,
+              private toastCtrl:    ToastController,
+              private loadingCtrl:  LoadingController) {}
 
   ngOnInit() {
     this.booksSubscription = this.booksService.books$.subscribe(

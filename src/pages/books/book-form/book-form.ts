@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { NavController } from 'ionic-angular';
 import { BooksService } from '../../../services/books.service';
 import { Book } from '../../../models/Book';
+import { Camera } from '@ionic-native/camera';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { NavController, normalizeURL, ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-book-form',
@@ -11,11 +12,14 @@ import { Book } from '../../../models/Book';
 export class BookFormPage implements OnInit {
 
   bookForm: FormGroup;
+  imageUrl: string;
 
 
-  constructor(private formBuilder: FormBuilder,
-              public navCtrl: NavController,
-              private booksService: BooksService) {}
+  constructor(private formBuilder:  FormBuilder,
+              public  navCtrl:      NavController,
+              private booksService: BooksService,
+              private toastCtrl:    ToastController,
+              private camera:       Camera) {}
 
   ngOnInit() {
     this.initForm();
@@ -29,7 +33,10 @@ export class BookFormPage implements OnInit {
   }
 
   onSubmitForm() {
-    let newBook = new Book(this.bookForm.get('name').value);
+    let newBook = new Book(
+      this.bookForm.get('name').value,
+      this.imageUrl
+    );
     for (let control of this.getDescriptionArray().controls) {
       newBook.description.push(control.value);
     }
@@ -48,6 +55,29 @@ export class BookFormPage implements OnInit {
 
   onRemoveDescription(index: number) {
     this.getDescriptionArray().removeAt(index);
+  }
+
+  onTakePhoto() {
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true
+    }).then(
+      (data) => {
+        if (data) {
+          this.imageUrl = normalizeURL(data);
+        }
+      }
+    ).catch(
+      (error) => {
+        this.toastCtrl.create({
+          message: error.message,
+          duration: 3000,
+          position: 'bottom'
+        }).present();
+      }
+    );
   }
 
 }

@@ -20,7 +20,7 @@ export class BooksService {
       startTime: '',
       endTime: '',
       noOneToWhomYouLentIt: '',
-      imagePath: ''
+      imageUrl: ''
     },
     {
       name: 'L\'essentiel du Japon',
@@ -33,7 +33,7 @@ export class BooksService {
       startTime: '',
       endTime: '',
       noOneToWhomYouLentIt: '',
-      imagePath: ''
+      imageUrl: ''
     },
     {
       name: 'Vegan',
@@ -46,7 +46,7 @@ export class BooksService {
       startTime: '',
       endTime: '',
       noOneToWhomYouLentIt: '',
-      imagePath: ''
+      imageUrl: ''
     }
   ];
 

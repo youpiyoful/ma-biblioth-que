@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
 import { Book } from '../../../models/Book';
 import { BooksService } from '../../../services/books.service';
+// import { BookFormPage } from '../book-form/book-form';
+import { Component, OnInit } from '@angular/core';
+import { NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, NgForm } from '@angular/forms';
 
 
@@ -15,10 +16,10 @@ export class SingleBookPage implements OnInit {
   book: Book;
   myDate: string = new Date().toISOString();
 
-  constructor(public navParams: NavParams,
-              public viewCtrl: ViewController,
-              public booksService: BooksService,
-              public formBuilder: FormBuilder) {}
+  constructor(public navParams:     NavParams,
+              public viewCtrl:      ViewController,
+              public booksService:  BooksService,
+              public formBuilder:   FormBuilder) {}
 
   ngOnInit() {
     this.index = this.navParams.get('index');

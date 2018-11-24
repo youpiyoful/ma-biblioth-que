@@ -5,14 +5,15 @@ export class Book {
   startTime: string;
   endTime: string;
   noOneToWhomYouLentIt: string;
-  imagePath: string;
+  // imageUrl: string;
 
-  constructor(public name: string) {
+  constructor(public name: string,
+              public imageUrl: string) {
     this.description = [];
     this.isLoan = false;
     this.startTime = '';
     this.endTime = '';
     this.noOneToWhomYouLentIt = '';
-    this.imagePath = '';
+    // this.imageUrl = '';
   }
 }

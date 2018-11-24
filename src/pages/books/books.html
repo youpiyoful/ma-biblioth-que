@@ -15,9 +15,11 @@
   <ion-list>
     <ion-card *ngFor="let book of booksList; let i = index"
               (click)="onLoadBook(i)">
-      <ion-icon name="md-book" [color]="book.isLoan ? 'secondary' : 'danger'" end></ion-icon>
+      <div *ngIf="book.imageUrl">
+        <img [src]="book.imagePath">
+      </div>
       <ion-card-title>{{ book.name }}</ion-card-title>
-      <img [src]="book.imagePath" alt="">
+      <ion-icon name="md-book" [color]="book.isLoan ? 'secondary' : 'danger'" left></ion-icon>
     </ion-card>
   </ion-list>
   <button ion-button full (click)="onNewBook()">Nouveau livre</button>
