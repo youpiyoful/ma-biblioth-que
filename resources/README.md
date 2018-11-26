@@ -6,3 +6,7 @@ Cordova reference documentation:
 
 - Icons: https://cordova.apache.org/docs/en/latest/config_ref/images.html
 - Splash Screens: https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/
+
+
+This application will be an inventory of everything you own with many options like,  take photo,
+lend your equipment etc...
