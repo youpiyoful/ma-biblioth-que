@@ -21,7 +21,7 @@ export class BooksService {
         'Edition : Pour Les Nuls',
         'Genre : Educatif'
       ],
-      isLoan: false,
+      isLend: false,
       startTime: '',
       endTime: '',
       noOneToWhomYouLentIt: '',
@@ -34,7 +34,7 @@ export class BooksService {
         'Edition : lonely planet',
         'Genre : Voyage et Culture',
       ],
-      isLoan: false,
+      isLend: false,
       startTime: '',
       endTime: '',
       noOneToWhomYouLentIt: '',
@@ -47,7 +47,7 @@ export class BooksService {
         'Edition : Hachette Cuisine',
         'Genre : Cuisine'
       ],
-      isLoan: true,
+      isLend: true,
       startTime: '',
       endTime: '',
       noOneToWhomYouLentIt: '',
@@ -57,7 +57,7 @@ export class BooksService {
 
   addBook(book: Book) {
   this.booksList.push(book);
-  this.saveImages();
+  // this.saveImages();
   this.emitBooks();
   }
 
@@ -95,19 +95,19 @@ export class BooksService {
     });
   }
 
-  saveImages() {
-    this.storage.set('images', this.booksList);
-  }
-
-  fetchImages() {
-    this.storage.get('images').then(
-      (books) => {
-        if (books && books.length) {
-          this.booksList= books.slice();
-        }
-        this.emitBooks();
-      }
-    );
-  }
+  // saveImages() {
+  //   this.storage.set('images', this.booksList);
+  // }
+  //
+  // fetchImages() {
+  //   this.storage.get('images').then(
+  //     (books) => {
+  //       if (books && books.length) {
+  //         this.booksList= books.slice();
+  //       }
+  //       this.emitBooks();
+  //     }
+  //   );
+  // }
 
 }

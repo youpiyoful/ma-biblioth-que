@@ -32,7 +32,7 @@ export class SingleBookPage implements OnInit {
 
   onSubmitForm(form: NgForm) {
     this.book.startTime = this.myDate;
-    this.book.isLoan = !this.book.isLoan;
+    this.book.isLend = !this.book.isLend;
     // console.log(form.value);
     this.dismissModal(); // not required, just an ux choice
   }
@@ -40,7 +40,7 @@ export class SingleBookPage implements OnInit {
   onStoreBook() {
     this.book.startTime = '';
     this.book.noOneToWhomYouLentIt = '';
-    this.book.isLoan = !this.book.isLoan;
+    this.book.isLend = !this.book.isLend;
     this.dismissModal();  // not required, just an ux choice
   }
 

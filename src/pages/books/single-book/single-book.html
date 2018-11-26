@@ -13,7 +13,7 @@
 
 
 <ion-content padding>
-  <ion-card [ngClass]="{'is-stock': !book.isLoan, 'is-loan': book.isLoan}">
+  <ion-card [ngClass]="{'is-stock': !book.isLend, 'is-loan': book.isLend}">
     <ion-card-header>{{ book.name }}</ion-card-header>
     <ion-card-content>
       <p *ngFor="let line of book.description">{{ line }}</p>
@@ -22,8 +22,8 @@
   <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
     <ion-grid>
       <ion-list>
-        <ion-item *ngIf="imageUrl">
-          <img [src]="imageUrl" style="max-width: 100%">
+        <ion-item *ngIf="book.imageUrl">
+          <img [src]="book.imageUrl" style="max-width: 100%">
         </ion-item>
         <ion-item-divider color="no-interactif">Jour du prêt</ion-item-divider>
         <ion-item>
@@ -45,13 +45,13 @@
                   ion-button
                   full
                   color="danger"
-                  [disabled]="!book.isLoan">Prêter</button>
+                  [disabled]="!book.isLend">Prêter</button>
         </ion-col>
         <ion-col>
           <button ion-button
                   full
                   color="success"
-                  [disabled]="book.isLoan"
+                  [disabled]="book.isLend"
                   (click)="onStoreBook()">Ranger</button>
         </ion-col>
       </ion-row>
