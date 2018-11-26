@@ -1,12 +1,17 @@
 import { Book } from '../models/Book';
 import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 import * as firebase from 'firebase';
 import DataSnapshot = firebase.database.DataSnapshot;
 
+@Injectable()
 export class BooksService {
 
   books$ = new Subject<Book[]>();
+
+  constructor(private storage: Storage) {}
 
   booksList: Book[] = [
     {
@@ -52,6 +57,7 @@ export class BooksService {
 
   addBook(book: Book) {
   this.booksList.push(book);
+  this.saveImages();
   this.emitBooks();
   }
 
@@ -87,6 +93,21 @@ export class BooksService {
         }
       );
     });
+  }
+
+  saveImages() {
+    this.storage.set('images', this.booksList);
+  }
+
+  fetchImages() {
+    this.storage.get('images').then(
+      (books) => {
+        if (books && books.length) {
+          this.booksList= books.slice();
+        }
+        this.emitBooks();
+      }
+    );
   }
 
 }

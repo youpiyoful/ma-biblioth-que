@@ -3,7 +3,10 @@ import { Book } from '../../../models/Book';
 import { Camera } from '@ionic-native/camera';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { File, Entry } from '@ionic-native/file';
 import { NavController, normalizeURL, ToastController } from 'ionic-angular';
+
+declare var cordova: any;
 
 @Component({
   selector: 'page-book-form',
@@ -19,7 +22,8 @@ export class BookFormPage implements OnInit {
               public  navCtrl:      NavController,
               private booksService: BooksService,
               private toastCtrl:    ToastController,
-              private camera:       Camera) {}
+              private camera:       Camera,
+              private file:         File) {}
 
   ngOnInit() {
     this.initForm();
@@ -66,7 +70,18 @@ export class BookFormPage implements OnInit {
     }).then(
       (data) => {
         if (data) {
-          this.imageUrl = normalizeURL(data);
+          const path = data.replace(/[^\/]*$/, '');
+          const filename = data.replace(/^.*[\\\/]/, '');
+          const targetDirectory = cordova.file.dataDirectory;
+          this.file.moveFile(path,
+                             filename,
+                             targetDirectory,
+                             filename + new Date().getTime()).then(
+              (data: Entry) => {
+                this.imageUrl = normalizeURL(data.nativeURL);
+                this.camera.cleanup();
+              }
+            )
         }
       }
     ).catch(
@@ -76,6 +91,7 @@ export class BookFormPage implements OnInit {
           duration: 3000,
           position: 'bottom'
         }).present();
+        this.camera.cleanup();
       }
     );
   }

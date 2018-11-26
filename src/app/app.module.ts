@@ -11,12 +11,14 @@ import { BooksPage } from '../pages/books/books';
 import { BooksService } from '../services/books.service';
 import { Camera } from '@ionic-native/camera';
 import { DressingPage } from '../pages/dressing/dressing';
+import { File } from '@ionic-native/file';
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
 import { OptionsPage } from '../pages/options/options';
 import { SingleBookPage } from '../pages/books/single-book/single-book';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { TabsPage } from '../pages/tabs/tabs';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,6 +56,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     AuthService,
     BooksService,
     Camera,
+    File,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

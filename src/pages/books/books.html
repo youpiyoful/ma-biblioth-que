@@ -15,7 +15,7 @@
   <ion-list>
     <ion-card *ngFor="let book of booksList; let i = index"
               (click)="onLoadBook(i)">
-      <div *ngIf="book.imageUrl">
+      <div *ngIf="imageUrl">
         <img [src]="book.imagePath">
       </div>
       <ion-card-title>{{ book.name }}</ion-card-title>

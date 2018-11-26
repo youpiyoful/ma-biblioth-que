@@ -33,6 +33,7 @@ export class BooksPage implements OnInit, OnDestroy {
       }
     );
     this.booksService.emitBooks();
+    this.onFetchList();
   }
 
   onLoadBook(index: number) {

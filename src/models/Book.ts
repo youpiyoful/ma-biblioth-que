@@ -8,7 +8,7 @@ export class Book {
   // imageUrl: string;
 
   constructor(public name: string,
-              public imageUrl: string) {
+              public imagePath: string) {
     this.description = [];
     this.isLoan = false;
     this.startTime = '';
